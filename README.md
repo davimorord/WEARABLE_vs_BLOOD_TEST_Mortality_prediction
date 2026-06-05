@@ -85,7 +85,3 @@ Accelerometry captures nearly one‑third of the model's predictive power – ev
 
 **On sensitivity optimisation:**  
 No explicit effort was made to maximise sensitivity (e.g., lowering decision threshold or using cost‑sensitive learning). The reported sensitivities reflect *baseline performance* at threshold 0.5. For any real‑world clinical application, the threshold would be adjusted to prioritise sensitivity – trading off specificity.
-
----
-
-## Repository structure
