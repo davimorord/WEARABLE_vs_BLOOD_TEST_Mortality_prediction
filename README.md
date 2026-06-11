@@ -9,6 +9,20 @@
 
 ---
 
+## Device note: NHANES accelerometer vs modern smartwatches
+
+The accelerometry data in NHANES 2003‑2004 was collected using an **ActiGraph model 7164**. This is a uniaxial hip‑worn device that records vertical acceleration in one‑minute epochs. Participants wore it for seven consecutive days, removing it only for sleep and water activities.
+
+Modern smartwatches differ in three key ways:
+
+- **Triaxial measurement**: They capture movement in three planes (vertical, horizontal, and lateral) instead of just vertical.
+- **Wrist placement**: This improves compliance and captures upper body movements that hip‑worn devices miss.
+- **Additional sensors**: Optical heart rate monitors, accelerometers, and sometimes electrodermal activity provide complementary physiological signals.
+
+These technological advances would likely improve predictive performance. Triaxial measurement captures a wider range of activities (cycling, upper body movement). Wrist placement increases wear time compliance, reducing non‑wear misclassification. Additional sensors could provide independent risk information beyond raw movement counts. Therefore, the results presented here probably **underestimate** the predictive potential of current consumer wearables.
+
+---
+
 ## The problem
 
 Most cardiovascular risk tools (Framingham, ACC/AHA) require a blood draw. That means a clinic visit, a needle, a lab, and days of waiting. Millions of people never get tested – they do not see a doctor, live in low‑resource settings, or simply do not know they are at risk.
@@ -82,6 +96,17 @@ Accelerometry captures nearly one‑third of the model's predictive power – ev
 | Moderate event count (n = 216) | Limited statistical power for complex interactions |
 | Default thresholds used for training | Sensitivity can be improved with cost‑sensitive learning |
 | **No sensitivity optimisation** | The 65% sensitivity is a lower bound, not a ceiling |
+| **Accelerometer technology gap** | NHANES used a uniaxial hip‑worn device (ActiGraph 7164). Modern smartwatches are triaxial, wrist‑worn, and include additional sensors (heart rate, etc.). Results likely **underestimate** current wearable potential. However, direct application to modern devices would require calibration or dataset adaptation. |
 
 **On sensitivity optimisation:**  
 No explicit effort was made to maximise sensitivity (e.g., lowering decision threshold or using cost‑sensitive learning). The reported sensitivities reflect *baseline performance* at threshold 0.5. For any real‑world clinical application, the threshold would be adjusted to prioritise sensitivity – trading off specificity.
+
+---
+
+## Future work
+
+**External validation.** The most natural next step is validating the model on NHANES 2005‑2006, which used the same accelerometer model and mortality linkage protocol. A stronger validation would use NHANES 2011‑2014 (wrist‑worn triaxial accelerometer), testing both temporal and technological generalisability.
+
+**SHAP analysis.** Adding SHAP (SHapley Additive exPlanations) would make the model more transparent, showing which features drive predictions for individual patients. This is particularly useful for clinical adoption.
+
+**MLOps deployment.** The model could be deployed as an endpoint using Azure ML, with experiment tracking via MLflow and a simple API for real‑time risk scoring.
