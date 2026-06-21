@@ -19,7 +19,7 @@ Modern smartwatches differ in three key ways:
 - **Wrist placement**: This improves compliance and captures upper body movements that hip‑worn devices miss.
 - **Additional sensors**: Optical heart rate monitors, accelerometers, and sometimes electrodermal activity provide complementary physiological signals.
 
-These technological advances would likely improve predictive performance. Triaxial measurement captures a wider range of activities (cycling, upper body movement). Wrist placement increases wear time compliance, reducing non‑wear misclassification. Additional sensors could provide independent risk information beyond raw movement counts. Therefore, the results presented here probably **underestimate** the predictive potential of current consumer wearables.
+These technological advances would likely improve predictive performance. Triaxial measurement captures a wider range of activities. Wrist placement increases wear time compliance, reducing non‑wear misclassification. Additional sensors could provide independent risk information beyond raw movement counts. Therefore, the results presented here probably **underestimate** the predictive potential of current consumer wearables.
 
 ---
 
@@ -83,7 +83,7 @@ Wearable prescreening (threshold 0.2‑0.3) → high‑risk individuals referred
 | Wearable | TLAC_mean, sedentary_mean, mvpa_mean | **29.9%** |
 | Laboratory | hba1c, hdl, sbp, bmi, lipids | 38.9% |
 
-Accelerometry captures nearly one‑third of the model's predictive power – even when clinical and laboratory data are available. This confirms that physical activity patterns carry mortality risk information that traditional biomarkers do not fully explain.
+Accelerometry captures nearly one‑third of the model's predictive power, even when clinical and laboratory data are available. This confirms that physical activity patterns carry mortality risk information that traditional biomarkers do not fully explain.
 
 ---
 
@@ -96,7 +96,17 @@ Accelerometry captures nearly one‑third of the model's predictive power – ev
 | Moderate event count (n = 216) | Limited statistical power for complex interactions |
 | Default thresholds used for training | Sensitivity can be improved with cost‑sensitive learning |
 | **No sensitivity optimisation** | The 65% sensitivity is a lower bound, not a ceiling |
-| **Accelerometer technology gap** | NHANES used a uniaxial hip‑worn device (ActiGraph 7164). Modern smartwatches are triaxial, wrist‑worn, and include additional sensors (heart rate, etc.). Results likely **underestimate** current wearable potential. However, direct application to modern devices would require calibration or dataset adaptation. |
+| **Accelerometer technology gap** | NHANES used a uniaxial hip‑worn device (ActiGraph 7164). Modern smartwatches are triaxial, wrist‑worn, and include additional sensors (heart rate, etc.). Results likely **underestimate** current wearable potential. Direct application to modern devices would require calibration or dataset adaptation. |
+
+**Insufficient events for age‑stratified feature importance**
+
+| Age Group | Mortality Rate | Deaths (n) |
+|-----------|---------------|------------|
+| 20–39 | 0.9% | 8 |
+| 40–59 | 6.5% | 56 |
+| 60–74 | 21.1% | 152 |
+
+The youngest group (20–39) accounts for only 8 deaths — far too few for any reliable stratified feature importance analysis. Consequently, the model's strong reliance on age may reflect age‑related physiological decline rather than modifiable risk factors in younger populations. Future work should prioritise larger datasets with sufficient events across all age groups to disentangle these effects.
 
 **On sensitivity optimisation:**  
 No explicit effort was made to maximise sensitivity (e.g., lowering decision threshold or using cost‑sensitive learning). The reported sensitivities reflect *baseline performance* at threshold 0.5. For any real‑world clinical application, the threshold would be adjusted to prioritise sensitivity – trading off specificity.
