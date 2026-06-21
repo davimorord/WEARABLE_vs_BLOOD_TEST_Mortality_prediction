@@ -75,6 +75,14 @@ Wearable prescreening (threshold 0.2‑0.3) → high‑risk individuals referred
 
 ---
 
+## Sensitivity–Specificity Trade-off
+
+![Sensitivity–Specificity Trade-off](images/threshold_tradeoff.png)
+
+*The wearable-only model can achieve 100% sensitivity at threshold 0.2–0.3, making it suitable for population screening.*
+
+---
+
 ## Feature importance (combined model)
 
 | Domain | Key variables | Combined importance |
@@ -82,6 +90,8 @@ Wearable prescreening (threshold 0.2‑0.3) → high‑risk individuals referred
 | Demographic | age, sex | 31.2% |
 | Wearable | TLAC_mean, sedentary_mean, mvpa_mean | **29.9%** |
 | Laboratory | hba1c, hdl, sbp, bmi, lipids | 38.9% |
+
+![XGBoost Feature Importance](images/feature_importance.png)
 
 Accelerometry captures nearly one‑third of the model's predictive power, even when clinical and laboratory data are available. This confirms that physical activity patterns carry mortality risk information that traditional biomarkers do not fully explain.
 
@@ -99,6 +109,8 @@ Accelerometry captures nearly one‑third of the model's predictive power, even 
 | **Accelerometer technology gap** | NHANES used a uniaxial hip‑worn device (ActiGraph 7164). Modern smartwatches are triaxial, wrist‑worn, and include additional sensors (heart rate, etc.). Results likely **underestimate** current wearable potential. Direct application to modern devices would require calibration or dataset adaptation. |
 
 **Insufficient events for age‑stratified feature importance**
+
+![10‑Year Natural Mortality Rate by Age Group](images/mortality_by_age.png)
 
 | Age Group | Mortality Rate | Deaths (n) |
 |-----------|---------------|------------|
