@@ -77,7 +77,7 @@ Wearable prescreening (threshold 0.2‑0.3) → high‑risk individuals referred
 
 ## Sensitivity–Specificity Trade-off
 
-![Sensitivity–Specificity Trade-off](figures/Sensitivity–Specificity Trade-off (Wearable-only Model).png)
+![Sensitivity–Specificity Trade-off](figures/Sensitivity_Specificity_Trade_off _(Wearable_only _Model).png)
 
 *The wearable-only model can achieve 100% sensitivity at threshold 0.2–0.3, making it suitable for population screening.*
 
@@ -91,7 +91,7 @@ Wearable prescreening (threshold 0.2‑0.3) → high‑risk individuals referred
 | Wearable | TLAC_mean, sedentary_mean, mvpa_mean | **29.9%** |
 | Laboratory | hba1c, hdl, sbp, bmi, lipids | 38.9% |
 
-![XGBoost Feature Importance](figures/XGBoost Feature Importance – Combined Model.png)
+![XGBoost Feature Importance](figures/XGBoost_Feature_Importance_Combined_Model.png)
 
 Accelerometry captures nearly one‑third of the model's predictive power, even when clinical and laboratory data are available. This confirms that physical activity patterns carry mortality risk information that traditional biomarkers do not fully explain.
 
@@ -110,7 +110,7 @@ Accelerometry captures nearly one‑third of the model's predictive power, even 
 
 **Insufficient events for age‑stratified feature importance**
 
-![10‑Year Natural Mortality Rate by Age Group](figures/10‑Year Natural Mortality Rate by Age Group.png)
+![10‑Year Natural Mortality Rate by Age Group](figures/10_Year_Natural_Mortality_Rate_by_Age_Group.png)
 
 | Age Group | Mortality Rate | Deaths (n) |
 |-----------|---------------|------------|
