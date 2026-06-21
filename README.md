@@ -77,7 +77,7 @@ Wearable prescreening (threshold 0.2‑0.3) → high‑risk individuals referred
 
 ## Sensitivity–Specificity Trade-off
 
-![Sensitivity–Specificity Trade-off](figures/Sensitivity_Specificity_Trade_off _(Wearable_only _Model).png)
+![Sensitivity–Specificity Trade-off](figures/Sensitivity_Specificity_Trade_off_(Wearable_only_Model).png)
 
 *The wearable-only model can achieve 100% sensitivity at threshold 0.2–0.3, making it suitable for population screening.*
 
