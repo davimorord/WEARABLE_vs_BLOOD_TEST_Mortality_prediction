@@ -23,6 +23,46 @@ These technological advances would likely improve predictive performance. Triaxi
 
 ---
 
+## Data Processing
+
+### Accelerometry and Mortality Data
+
+Accelerometry and mortality data were obtained from the **NHANES 2003‑2004** cycle. Data processing was performed in **R** using the `rnhanesdata` package (Leroux, 2018), which provides a pipeline for:
+
+- Downloading and processing raw accelerometry data (ActiGraph 7164, 1‑minute epochs)
+- Linking mortality data from the NHANES Public‑Use Linked Mortality Files
+- Calculating daily activity summaries: total log activity count (TLAC), sedentary minutes, and MVPA minutes
+- Handling non‑wear time and missing data
+
+The processed data were then exported to CSV and used for all subsequent modeling in Python.
+
+### Key Processing Steps
+
+| Step | Description | Tools |
+|------|-------------|-------|
+| 1. Download accelerometry data | Raw minute‑level activity counts for 2003‑2004 | `rnhanesdata`, CDC website |
+| 2. Process mortality data | 10‑year natural mortality outcome, excluding accidents | `process_mort()` |
+| 3. Calculate activity summaries | Daily TLAC, sedentary time, MVPA across valid days | R, `dplyr` |
+| 4. Handle missing data | Non‑wear imputation, valid day criteria (≥10 hrs wear) | R |
+| 5. Export clean dataset | CSV file for Python modeling pipeline | `readr` |
+
+### Activity Features Derived
+
+| Feature | Description |
+|---------|-------------|
+| `TLAC_mean` | Total Log Activity Count (average across valid days) |
+| `sedentary_mean` | Minutes/day with <100 counts (average) |
+| `mvpa_mean` | Minutes/day with ≥2020 counts (moderate‑vigorous) |
+| `valid_days` | Number of days with ≥10 hours of wear |
+
+### References
+
+- Leroux, A. (2018). *rnhanesdata: NHANES Accelerometry Data Pipeline*. R package version 1.0. URL: https://github.com/andrew-leroux/rnhanesdata
+- National Center for Health Statistics. *Public‑use Linked Mortality File, 2015*. Hyattsville, Maryland.
+- Tudor‑Locke, C., et al. (2012). *Accelerometer data processing in NHANES*. Journal of Physical Activity and Health.
+
+---
+
 ## The problem
 
 Most cardiovascular risk tools (Framingham, ACC/AHA) require a blood draw. That means a clinic visit, a needle, a lab, and days of waiting. Millions of people never get tested – they do not see a doctor, live in low‑resource settings, or simply do not know they are at risk.
